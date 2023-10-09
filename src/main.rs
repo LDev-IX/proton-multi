@@ -13,7 +13,7 @@ fn main() {
         let execc: DirEntry = exec.unwrap();
         let path: String = execc.path().to_str().unwrap().to_string().to_owned();
         let execname: String = execc.file_name().to_str().unwrap().to_owned();
-        if execname.ends_with(".exe"){
+        if execname.ends_with(".exe") || execname.ends_with(".bat") && !execname.starts_with("proton"){
             cwrite(format!("{index} > {execname}\r\n").as_str(), &mut handout);
             entries.push(Entry{index: index, path: path});
             index += 1;
