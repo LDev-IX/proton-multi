@@ -1,7 +1,7 @@
 use std::fs::DirEntry;
-use std::io::{Write, BufRead, stdout, stdin, Stdout, Stdin, Error};
+use std::io::{Write, BufRead, stdout, stdin, Stdout, Stdin};
 use std::{fs, env};
-use std::process::{Command, Child};
+use std::process::Command;
 
 fn main() {
     let mut handout:Stdout = stdout();
@@ -13,7 +13,7 @@ fn main() {
         let execc: DirEntry = exec.unwrap();
         let path: String = execc.path().to_str().unwrap().to_string().to_owned();
         let execname: String = execc.file_name().to_str().unwrap().to_owned();
-        if execname.ends_with(".exe") || execname.ends_with(".bat") && !execname.starts_with("proton"){
+        if (execname.ends_with(".exe") || execname.ends_with(".bat")) && !execname.starts_with("proton"){
             cwrite(format!("{index} > {execname}\r\n").as_str(), &mut handout);
             entries.push(Entry{index: index, path: path});
             index += 1;
@@ -21,7 +21,6 @@ fn main() {
     }
     loop{
         cwrite("Enter the executable index to start: ", &mut handout);
-        let curow = index + 2;
         let mut inpt: u8 = 0;
         let mut is_err: bool = true;
         let reads: String = cread(&handin).replace("\r\n", "");
@@ -53,7 +52,6 @@ fn main() {
             }
         }
         cwrite(format!("Executable with the index {inpt}\r\n").as_str(), &mut handout);
-        //cwrite(format!("\x1B[{curow};1H").as_str(), &mut handout);
     }
 }
 
