@@ -1,5 +1,7 @@
 # proton-multi
-This can be helpful in situations where you need additional dependencies for the program you want to run
+[GUI Rewrite here](https://github.com/LDev-IX/p-manager)  
+This repo wont be updated anymore, use the above link for the rewrite.  
+This can be helpful in situations where you need additional dependencies for the program you want to run.
 
 ### Usage
 Add this executable to a directory with other programs.
